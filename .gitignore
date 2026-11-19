@@ -1,2 +1,5 @@
 /target
 qemu-app/target
+feather-app/target
+*.uf2
+feather-app/*.bin
