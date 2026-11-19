@@ -110,3 +110,37 @@ step,id,prediction,pct,event_happened,result,note
 21,CY,upload exits 0,70,yes,hit,
 21,CZ,LED blinks fast and steady afterwards,80,yes,hit,seen by the author
 21,DA,verbose log shows the bossac command line,90,yes,hit,
+23,DG,both binaries build first time,55,yes,hit,
+23,DH,replay.bin between 75000 and 110000 bytes,85,yes,hit,103636 bytes
+23,DI,initial SP 0x20007ff8 and reset vector odd and in range,90,yes,hit,
+23,DJ,the blink binary still builds,92,yes,hit,
+24,DK,upload ends with Verify successful,85,yes,hit,
+24,DL,after upload the red LED blinks slowly about once a second,80,yes,hit,seen by the author
+25,DS,after replugging the entry shows status OK and the port opens,45,no,hit,status stayed Error; first announced the wrong way round in chat and corrected before recording
+25,DT,if it still shows Error the code is 10,60,yes,hit,CM_PROB_FAILED_START
+26,DU,pytest passes and the build succeeds,95,yes,hit,
+26,DV,new replay.bin within 103436 to 103836 bytes,85,yes,hit,103636 bytes
+27,DW,after flashing Windows shows status OK and the port opens,45,no,hit,status stayed Error; first announced the wrong way round in chat and corrected before recording
+28,DX,the problem status exists and is non-zero,85,yes,hit,0xC000000E
+28,DY,the PnP event log can be read without admin rights,50,yes,hit,
+29,DZ,on a different USB port the status is OK and the port opens,30,no,hit,new port and new instance id failed the same way; first announced the wrong way round in chat and corrected before recording
+30,EA,a USB example file exists in the crate examples folder,85,yes,hit,usb_echo.rs
+30,EB,it needs no crates beyond the ones feather-app already has,60,yes,hit,
+30,EC,the stock example builds first time,70,yes,hit,
+30,ED,its clock setup uses with_internal_32kosc,80,yes,hit,
+31,EE,the stock example gets status OK and the port opens,55,no,miss,the crate own example fails the same way as my firmware
+31,EF,the stock example fails with the same code 10,40,yes,miss,under 50 percent is a hit only if it did not happen; first announced the wrong way round in chat and corrected before recording
+32,FA,the Arduino sketch gets status OK and prints its line,80,yes,hit,COM3
+32,FB,the Arduino sketch compiles first time,85,yes,hit,
+33,EG,the flash-result firmware builds first time,75,yes,hit,
+33,EH,its binary is between 78000 and 95000 bytes,75,yes,hit,80696 bytes
+34,EI,upload succeeds with Verify successful,85,yes,hit,
+34,EJ,the LED blinks slowly after upload,85,yes,hit,seen by the author
+34,EK,the bossac read succeeds,80,yes,hit,
+34,EL,the first word reads 32504552,75,yes,hit,
+34,EM,rows is 10680,75,yes,hit,
+34,EN,mismatches is 0,88,yes,hit,
+34,EO,per_step is between 300 and 3000 cycles,85,yes,hit,558 cycles
+34,EP,per_step is between 500 and 1500 cycles,55,yes,hit,558 cycles
+34,EQ,per_step is above 3000 cycles,8,no,hit,
+34,ER,per_step is below 300 cycles,5,no,hit,
