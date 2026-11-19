@@ -17,7 +17,7 @@ This project was drafted with Claude (Anthropic) and checked by the author. Ever
 ## Limits
 
 - The vectors come from the C code, so they show that the two agree. They do not show that the controller design is right.
-- QEMU is not cycle accurate, so there are no timing results here. The code has not been run on a physical board yet.
+- QEMU is not cycle accurate, so there are no timing results here. A blink test (feather-app) runs on a physical Adafruit Feather M0, but the vector replay has only run on the emulated Cortex-M3 so far.
 - The mutants are {{mutants}} hand-made changes, not the output of an exhaustive mutation tool.
 - The scorecard is small and scored by hand, so treat the hit rate as a record of this project only.
 
@@ -26,6 +26,7 @@ This project was drafted with Claude (Anthropic) and checked by the author. Ever
 - src/lib.rs: the port (Pid, Sup, Control) with unit tests
 - tests/replay.rs: replays vectors/vectors.csv against the port
 - qemu-app/: bare-metal Cortex-M3 replay of the same vectors
+- feather-app/: Feather M0 (SAMD21) blink firmware, flashed with the bossac that ships with the Arduino IDE
 - vectors/: generator built from the C core, and the vectors
 - tools/: scripts for the blob, mutation check, scorecard totals, figures and this README
 - results/, figures/, docs/: mutation results, figures, scorecard

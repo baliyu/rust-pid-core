@@ -12,12 +12,12 @@ This project was drafted with Claude (Anthropic) and checked by the author. Ever
 
 - Replay: a small C program drives the real C core under the undefined-behaviour sanitiser and writes 10680 rows of inputs and outputs. The Rust port reproduces every row exactly, on the PC and on an emulated Cortex-M3 (QEMU lm3s6965evb).
 - Mutation check: 10 deliberate bugs were put into the Rust port one at a time. The replay test with random vectors alone caught 8 of 10. Adding boundary vectors for the ADC limits raised that to 10 of 10 (figures/mutation_kills.png).
-- Predictions: before each run a prediction with a percentage was written down and scored afterwards from the pasted output. 82 predictions so far: 78 hit and 4 missed (95.1 percent hit). The misses are kept in docs/scorecard.csv, and figures/calibration.png compares stated confidence with what happened.
+- Predictions: before each run a prediction with a percentage was written down and scored afterwards from the pasted output. 111 predictions so far: 100 hit and 11 missed (90.1 percent hit). The misses are kept in docs/scorecard.csv, and figures/calibration.png compares stated confidence with what happened.
 
 ## Limits
 
 - The vectors come from the C code, so they show that the two agree. They do not show that the controller design is right.
-- QEMU is not cycle accurate, so there are no timing results here. The code has not been run on a physical board yet.
+- QEMU is not cycle accurate, so there are no timing results here. A blink test (feather-app) runs on a physical Adafruit Feather M0, but the vector replay has only run on the emulated Cortex-M3 so far.
 - The mutants are 10 hand-made changes, not the output of an exhaustive mutation tool.
 - The scorecard is small and scored by hand, so treat the hit rate as a record of this project only.
 
@@ -26,6 +26,7 @@ This project was drafted with Claude (Anthropic) and checked by the author. Ever
 - src/lib.rs: the port (Pid, Sup, Control) with unit tests
 - tests/replay.rs: replays vectors/vectors.csv against the port
 - qemu-app/: bare-metal Cortex-M3 replay of the same vectors
+- feather-app/: Feather M0 (SAMD21) blink firmware, flashed with the bossac that ships with the Arduino IDE
 - vectors/: generator built from the C core, and the vectors
 - tools/: scripts for the blob, mutation check, scorecard totals, figures and this README
 - results/, figures/, docs/: mutation results, figures, scorecard

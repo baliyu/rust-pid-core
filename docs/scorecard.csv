@@ -81,3 +81,32 @@ step,id,prediction,pct,event_happened,result,note
 14,BP,pytest reports 8 passed,85,yes,hit,
 14,BQ,README has no em dash and no unfilled placeholder,95,yes,hit,
 14,BR,make_readme check passes right after generation,97,yes,hit,
+15,BS,totals report 82 rows and 78 hits,92,yes,hit,
+15,BT,regenerated README contains 95.1,90,yes,hit,
+15,BU,pytest reports 9 passed,88,yes,hit,
+15,BV,CLI turns a 600-byte file into 3 blocks and 1536 bytes,95,yes,hit,
+16,BW,llvm-objcopy found after adding the component,85,yes,hit,
+16,BX,cargo build for thumbv6m succeeds first time,62,no,miss,my memory.x RAM end was not 8-byte aligned
+16b,CC,memory.x anchor matches once and is replaced,97,yes,hit,
+16b,CD,build now succeeds,92,yes,hit,
+16b,CE,bin under 20 KB,85,yes,hit,1940 bytes
+16b,CF,initial stack pointer is 0x20007ff8,90,yes,hit,
+16b,CG,reset vector odd and between 0x2000 and 0x40000,92,yes,hit,
+16b,CH,UF2 size is 512 times ceil(bin/256),97,yes,hit,
+17,CI,a drive labelled FEATHERBOOT appears,30,no,hit,board has the Arduino bootloader not UF2
+17,CJ,serial port with VID_239A appears,80,yes,hit,
+17,CK,bossac.exe found under Arduino15 packages,80,yes,hit,
+18,CL,bossac exits 0 and prints Verify successful,82,no,miss,my argument order was wrong
+18,CM,it reports 31 pages written,75,no,miss,
+18,CO,no VID_239A port listed 3 seconds later,85,no,miss,
+19,CP,help lists an offset option,85,yes,hit,
+19,CQ,boot is listed with an optional value,60,yes,hit,
+19,CR,-U takes a BOOL value,85,yes,hit,true but optional and 1 or 0 not true
+20,CS,bossac exits 0 and prints Verify successful,85,no,miss,usb-port=true was read as 0
+20,CT,it reports 31 pages written,75,no,miss,
+20,CV,no VID_239A port listed 3 seconds later,85,no,miss,
+21,CW,arduino-cli found under Programs,80,yes,hit,
+21,CX,core list shows adafruit:samd,85,yes,hit,
+21,CY,upload exits 0,70,yes,hit,
+21,CZ,LED blinks fast and steady afterwards,80,yes,hit,seen by the author
+21,DA,verbose log shows the bossac command line,90,yes,hit,
