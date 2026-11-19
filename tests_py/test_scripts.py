@@ -100,3 +100,50 @@ def test_bin2uf2_blocks_are_valid(tmp_path):
         assert struct.unpack("<I", block[508:])[0] == 0x0AB16F30
         payload += block[32:32 + 256]
     assert payload[:len(data)] == data
+
+
+def _feather_paths():
+    root = Path(__file__).resolve().parent.parent
+    return root, root / "tools" / "parse_feather_result.py", root / "tools" / "make_feather_figure.py"
+
+
+def test_feather_result_decodes_and_csv_is_up_to_date(tmp_path):
+    import csv
+
+    root, parse, _ = _feather_paths()
+    out = tmp_path / "cycles.csv"
+    r = subprocess.run([sys.executable, str(parse), str(root / "results" / "feather_result.bin"),
+                        str(root / "qemu-app" / "vectors.bin"), str(out)], capture_output=True, text=True)
+    assert r.returncode == 0, r.stdout + r.stderr
+    assert out.read_bytes() == (root / "results" / "feather_cycles.csv").read_bytes()
+    with out.open() as f:
+        rows = list(csv.DictReader(f))
+    total = rows[-1]
+    assert total["scenario"] == "all" and total["mismatches"] == "0"
+    assert sum(int(x["cycles"]) for x in rows[:-1]) == int(total["cycles"])
+    assert sum(int(x["rows"]) for x in rows[:-1]) == int(total["rows"])
+
+
+def test_feather_parser_rejects_bad_dumps(tmp_path):
+    root, parse, _ = _feather_paths()
+    good = (root / "results" / "feather_result.bin").read_bytes()
+    for name, index in (("magic", 0), ("total", 12)):
+        data = bytearray(good)
+        data[index] ^= 0xFF if name == "magic" else 0x01
+        bad = tmp_path / (name + ".bin")
+        bad.write_bytes(bytes(data))
+        out = tmp_path / (name + ".csv")
+        r = subprocess.run([sys.executable, str(parse), str(bad), str(root / "qemu-app" / "vectors.bin"), str(out)],
+                           capture_output=True, text=True)
+        assert r.returncode != 0, name
+        assert not out.exists(), name
+
+
+def test_feather_figure_is_made(tmp_path):
+    root, _, fig = _feather_paths()
+    out = tmp_path / "f.png"
+    r = subprocess.run([sys.executable, str(fig), str(root / "results" / "feather_cycles.csv"), str(out)],
+                       capture_output=True, text=True)
+    assert r.returncode == 0, r.stdout + r.stderr
+    assert out.stat().st_size > 10000
+    assert (root / "figures" / "feather_cycles.png").exists()
