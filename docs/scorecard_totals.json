@@ -1,33 +1,33 @@
 {
-  "rows": 165,
-  "hits": 151,
-  "misses": 14,
-  "hit_rate_percent": 91.5,
+  "rows": 179,
+  "hits": 164,
+  "misses": 15,
+  "hit_rate_percent": 91.6,
   "inconsistent_rows": [],
   "calibration": [
     {
       "range": "0-59",
-      "n": 15,
-      "mean_confidence": 38.9,
-      "hit_rate": 86.7
+      "n": 17,
+      "mean_confidence": 38.7,
+      "hit_rate": 82.4
     },
     {
       "range": "60-79",
-      "n": 27,
-      "mean_confidence": 69.1,
-      "hit_rate": 88.9
+      "n": 28,
+      "mean_confidence": 68.8,
+      "hit_rate": 89.3
     },
     {
       "range": "80-89",
-      "n": 61,
+      "n": 65,
       "mean_confidence": 84.1,
-      "hit_rate": 91.8
+      "hit_rate": 92.3
     },
     {
       "range": "90-100",
-      "n": 62,
-      "mean_confidence": 92.2,
-      "hit_rate": 93.5
+      "n": 69,
+      "mean_confidence": 92.1,
+      "hit_rate": 94.2
     }
   ]
 }

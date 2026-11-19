@@ -164,3 +164,17 @@ step,id,prediction,pct,event_happened,result,note
 41,FT,pytest passes 13 tests,90,yes,hit,
 41,FU,only make_figures.py and calibration.png show as changed,70,yes,hit,
 41,FV,no label or legend overlaps in the new calibration figure,80,yes,hit,checked by eye by the author
+42,FZ,cargo fmt --check passes at the repo root,60,yes,hit,
+42,GA,qemu-app has a .cargo/config.toml with a qemu runner,85,yes,hit,
+42,GB,a rust-toolchain file exists,30,no,hit,
+43,GC,the push guards pass,90,yes,hit,
+43,GD,the push succeeds with exit code 0,92,yes,hit,
+43,GE,the remote main shows 46970f5 afterwards,90,yes,hit,
+44,GF,qemu-app/vectors.bin is tracked in git,80,yes,hit,
+44,GG,the workflow file passes the checks and is committed,85,yes,hit,
+44,GH,pytest still passes 13 tests,92,yes,hit,
+45,GI,the YAML parses and lists the jobs python and rust,92,yes,hit,
+45,GJ,the last line of the file is the pytest run line,85,yes,hit,
+46,GK,the push of the workflow commit succeeds with exit code 0,92,yes,hit,
+46,GL,the remote main shows 351d31a afterwards,90,yes,hit,
+46,GM,both CI jobs pass on their first run,45,yes,miss,"run ci#1 on 351d31a completed successfully in 1m 4s, from the Actions page pasted by the author"

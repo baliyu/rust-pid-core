@@ -11,3 +11,5 @@ Left out so far:
 - Scoring corrections: DS, DW and DZ (under 50 percent, event did not happen) are hits, and EF (40 percent, event happened) is a miss. They were first announced the wrong way round in the working chat and corrected before being recorded here.
 
 Steps 37 to 41: the first push attempt (FM) stopped at the guard because a remote already existed with the wrong username (baliy instead of baliyu), probably set in an earlier session. FN and FO were predicted again for the second attempt. The calibration figure legend overlapped the n labels and was fixed in step 41.
+
+Steps 42 to 46: the CI workflow was added and pushed. The first run (ci#1, commit 351d31a) completed successfully. GM was predicted at 45 percent and happened, so it is a miss. The workflow has run once, so one green run is all that is claimed.
