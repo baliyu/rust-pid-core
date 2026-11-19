@@ -1,8 +1,8 @@
 {
-  "rows": 77,
-  "hits": 73,
+  "rows": 82,
+  "hits": 78,
   "misses": 4,
-  "hit_rate_percent": 94.8,
+  "hit_rate_percent": 95.1,
   "inconsistent_rows": [],
   "calibration": [
     {
@@ -19,15 +19,15 @@
     },
     {
       "range": "80-89",
-      "n": 25,
+      "n": 27,
       "mean_confidence": 84.7,
-      "hit_rate": 96.0
+      "hit_rate": 96.3
     },
     {
       "range": "90-100",
-      "n": 38,
-      "mean_confidence": 92.4,
-      "hit_rate": 92.1
+      "n": 41,
+      "mean_confidence": 92.6,
+      "hit_rate": 92.7
     }
   ]
 }

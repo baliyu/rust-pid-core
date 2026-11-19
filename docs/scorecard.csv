@@ -76,3 +76,8 @@ step,id,prediction,pct,event_happened,result,note
 13,BK,vectors test is not skipped,92,yes,hit,
 13,BL,pytest run under 15 s,85,yes,hit,2.17 s
 13,BM,git status shows only the new test folder,70,yes,hit,
+14,BN,totals report 77 rows and 73 hits and 4 misses,90,yes,hit,
+14,BO,README contains 94.8,85,yes,hit,
+14,BP,pytest reports 8 passed,85,yes,hit,
+14,BQ,README has no em dash and no unfilled placeholder,95,yes,hit,
+14,BR,make_readme check passes right after generation,97,yes,hit,

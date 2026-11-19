@@ -79,3 +79,24 @@ def test_every_script_is_covered_here():
 def test_readme_is_up_to_date():
     r = run(PY + ["tools/make_readme.py", "--check"])
     assert r.returncode == 0, r.stdout + r.stderr
+
+
+def test_bin2uf2_blocks_are_valid(tmp_path):
+    import struct
+
+    data = bytes(range(256)) * 2 + b"\x01\x02\x03"
+    src, dst = tmp_path / "in.bin", tmp_path / "out.uf2"
+    src.write_bytes(data)
+    r = run(PY + ["tools/bin2uf2.py", str(src), str(dst)])
+    assert r.returncode == 0, r.stdout + r.stderr
+    raw = dst.read_bytes()
+    assert len(raw) == 3 * 512
+    payload = b""
+    for i in range(3):
+        block = raw[i * 512:(i + 1) * 512]
+        m0, m1, flags, addr, size, num, total, family = struct.unpack("<IIIIIIII", block[:32])
+        assert (m0, m1) == (0x0A324655, 0x9E5D5157)
+        assert (flags, addr, size, num, total, family) == (0x2000, 0x2000 + 256 * i, 256, i, 3, 0x68ED2B88)
+        assert struct.unpack("<I", block[508:])[0] == 0x0AB16F30
+        payload += block[32:32 + 256]
+    assert payload[:len(data)] == data

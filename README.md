@@ -12,7 +12,7 @@ This project was drafted with Claude (Anthropic) and checked by the author. Ever
 
 - Replay: a small C program drives the real C core under the undefined-behaviour sanitiser and writes 10680 rows of inputs and outputs. The Rust port reproduces every row exactly, on the PC and on an emulated Cortex-M3 (QEMU lm3s6965evb).
 - Mutation check: 10 deliberate bugs were put into the Rust port one at a time. The replay test with random vectors alone caught 8 of 10. Adding boundary vectors for the ADC limits raised that to 10 of 10 (figures/mutation_kills.png).
-- Predictions: before each run a prediction with a percentage was written down and scored afterwards from the pasted output. 77 predictions so far: 73 hit and 4 missed (94.8 percent hit). The misses are kept in docs/scorecard.csv, and figures/calibration.png compares stated confidence with what happened.
+- Predictions: before each run a prediction with a percentage was written down and scored afterwards from the pasted output. 82 predictions so far: 78 hit and 4 missed (95.1 percent hit). The misses are kept in docs/scorecard.csv, and figures/calibration.png compares stated confidence with what happened.
 
 ## Limits
 
