@@ -4,5 +4,10 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-feather_m0 = { version = "0.20", features = ["rt"] }
+rust-pid-core = { path = ".." }
+feather_m0 = { version = "0.20", features = ["rt", "usb"] }
 panic-halt = "0.2"
+cortex-m = "0.7"
+usb-device = "0.3"
+usbd-serial = "0.2"
+heapless = "0.8"

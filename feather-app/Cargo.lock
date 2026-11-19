@@ -42,6 +42,7 @@ dependencies = [
  "seq-macro",
  "sorted-hlist",
  "typenum",
+ "usb-device",
  "void",
 ]
 
@@ -232,8 +233,13 @@ checksum = "00d174d5400e5e8fd687ad1049e2f578285fa914201b1af7e8b112a4546bd826"
 name = "feather-app"
 version = "0.1.0"
 dependencies = [
+ "cortex-m",
  "feather_m0",
+ "heapless",
  "panic-halt",
+ "rust-pid-core",
+ "usb-device",
+ "usbd-serial",
 ]
 
 [[package]]
@@ -245,6 +251,7 @@ dependencies = [
  "atsamd-hal",
  "cortex-m",
  "cortex-m-rt",
+ "usb-device",
 ]
 
 [[package]]
@@ -439,6 +446,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "portable-atomic"
+version = "1.15.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "05c8b63e8d9609db387f0324918f81d68fe27748f084ef092fb35954d0539a85"
+
+[[package]]
 name = "proc-macro2"
 version = "1.0.107"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -476,6 +489,10 @@ name = "rand_core"
 version = "0.9.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "76afc826de14238e6e8c374ddcc1fa19e374fd8dd986b0d2af0d02377261d83c"
+
+[[package]]
+name = "rust-pid-core"
+version = "0.1.0"
 
 [[package]]
 name = "rustc_version"
@@ -633,6 +650,28 @@ name = "unsafe-libyaml"
 version = "0.2.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "673aac59facbab8a9007c7f6108d11f63b603f7cabff99fabf650fea5c32b861"
+
+[[package]]
+name = "usb-device"
+version = "0.3.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "98816b1accafbb09085168b90f27e93d790b4bfa19d883466b5e53315b5f06a6"
+dependencies = [
+ "heapless",
+ "portable-atomic",
+]
+
+[[package]]
+name = "usbd-serial"
+version = "0.2.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "065e4eaf93db81d5adac82d9cef8f8da314cb640fa7f89534b972383f1cf80fc"
+dependencies = [
+ "embedded-hal 0.2.7",
+ "embedded-io",
+ "nb 1.1.0",
+ "usb-device",
+]
 
 [[package]]
 name = "vcell"
