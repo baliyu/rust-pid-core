@@ -1,0 +1,5 @@
+[package]
+name = "rust-pid-core"
+version = "0.1.0"
+edition = "2021"
+description = "no_std Rust port of a fixed-point PID core with checked arithmetic"
