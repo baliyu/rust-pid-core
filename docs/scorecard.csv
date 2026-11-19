@@ -1,0 +1,63 @@
+step,id,prediction,pct,event_happened,result,note
+1,A,sudo asks for password,85,yes,hit,
+1,B,apt installs qemu-system-arm,90,yes,hit,
+1,C,qemu version starts with 8.2,75,yes,hit,
+1,D,rustup installs without error,90,no,miss,my bug: sh stdin redirected to /dev/null
+1,E,rustc reports 1.90 or higher,85,no,miss,rust not installed
+1,F,both targets added,90,no,miss,rustup missing
+1b,G,rustup installs without error,90,yes,hit,
+1b,H,rustc reports 1.90 or higher,85,yes,hit,rustc 1.100.0
+1b,I,both targets added,92,yes,hit,
+1b,J,cargo version matches rustc,95,yes,hit,
+2,K,control.c exists and is 23 lines or fewer,80,yes,hit,
+2,L,vectors stored as CSV or JSON under tests,65,yes,hit,wording only: one board evidence CSV and no replay set
+2,M,Python tests load the C core via ctypes,60,yes,hit,scored in step 3
+2,N,git status clean,70,yes,hit,
+3,O,pid.c uses Q16.16 with int64 intermediates,70,yes,hit,
+3,P,pid.c has an integral clamp,75,yes,hit,
+3,Q,supervisor latches a fault after counted bad samples,65,yes,hit,
+3,R,wrapper builds the C core with ctypes,60,yes,hit,
+4,S,C builds and runs under UBSan with no error,85,yes,hit,
+4,T,vectors.csv has 10501 lines,92,yes,hit,
+4,U,two runs give identical sha256,97,yes,hit,
+4,V,fault appears in scenario 1,95,yes,hit,
+4,W,scenario 1 has at least one fault clear,85,yes,hit,
+4,X,out column reaches 1000,90,yes,hit,
+5,Y,host build succeeds,90,yes,hit,
+5,Z,thumbv7m lib build succeeds,92,yes,hit,
+5,AA,clippy gives no warnings,70,yes,hit,
+5,AB,three unit tests pass,82,yes,hit,
+5,AC,cargo fmt check passes before formatting,55,yes,hit,
+6,AD,10500 rows replayed with 0 mismatches,85,yes,hit,
+6,AE,no overflow error on any vector,90,yes,hit,
+6,AF,clippy clean with the new test,85,yes,hit,
+6,AG,test run under 2 s,90,no,miss,2.44 s including compile
+7,M1,replay test kills swap kp and ki,97,yes,hit,
+7,M2,replay test kills no anti-windup,90,yes,hit,
+7,M3,replay test kills fault after 4,95,yes,hit,
+7,M4,replay test kills clear after 19,90,yes,hit,
+7,M5,replay test kills D-term sign flip,85,yes,hit,
+7,M6,replay test kills no PID reset on fault,85,yes,hit,
+7,M7,replay test kills no output clamp,90,yes,hit,
+7,M8,replay test kills D-term always primed,85,yes,hit,
+7,M9,replay test kills ADC low limit 51,35,no,hit,survived as predicted
+7,M10,replay test kills ADC high limit 4044,35,no,hit,survived as predicted
+7,BASE,baseline passes,97,yes,hit,
+7,REST,lib.rs identical afterwards,99,yes,hit,
+8,AH,regeneration succeeds with 10681 lines,92,yes,hit,
+8,AI,first 10501 lines identical,97,yes,hit,
+8,AJ,replay passes 10680 rows with 0 mismatches,90,yes,hit,
+8,AK,M9 now killed,92,yes,hit,
+8,AL,M10 now killed,92,yes,hit,
+8,AM,all 10 mutants killed by the replay test,88,yes,hit,
+9,AN,QEMU app builds first time,85,yes,hit,
+9,AO,QEMU prints done,85,yes,hit,
+9,AP,five outputs are 304 186 56 43 43,85,yes,hit,
+9,AQ,no overflow line,97,yes,hit,
+9,AR,QEMU exit code 0,82,yes,hit,
+10,AS,vectors.bin is 74908 bytes,90,yes,hit,
+10,AT,replay firmware builds first time,88,yes,hit,
+10,AU,QEMU prints rows=10680 mismatches=0,85,yes,hit,
+10,AV,exit code 0,85,yes,hit,
+10,AW,blob identical when regenerated,97,yes,hit,
+10,AX,QEMU run under 5 s,90,yes,hit,1.99 s
