@@ -1,0 +1,11 @@
+id,description,replay_test,all_tests
+M1,swap kp and ki,killed,killed
+M2,remove anti-windup clamp,killed,killed
+M3,fault after 4 bad samples,killed,killed
+M4,clear after 19 good samples,killed,killed
+M5,flip D-term sign,killed,killed
+M6,no PID reset on fault,killed,killed
+M7,remove output clamp,killed,killed
+M8,D-term always primed,killed,killed
+M9,ADC low limit 51,survived,survived
+M10,ADC high limit 4044,survived,survived
