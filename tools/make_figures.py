@@ -69,12 +69,12 @@ def fig_calibration(rows, out):
     ax.set_xlabel("stated confidence bin (percent)", color=INK)
     ax.set_ylabel("percent", color=INK)
     ax.set_ylim(0, 108)
-    ax.legend(loc="lower right", frameon=False)
+    ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.2), ncol=2, frameon=False, labelcolor=INK)
     for side in ("top", "right"):
         ax.spines[side].set_visible(False)
     ax.set_title(f"Predicted confidence against outcome (n={len(rows)})", color=INK, fontsize=11)
     fig.tight_layout()
-    fig.savefig(out, dpi=150)
+    fig.savefig(out, dpi=150, bbox_inches="tight")
     plt.close(fig)
     for s in stats:
         print(f"calibration bin {s[0]}: n={s[1]}, mean confidence {s[2]:.1f}, event rate {s[3]:.1f}")
