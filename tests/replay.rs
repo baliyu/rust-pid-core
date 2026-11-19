@@ -34,6 +34,6 @@ fn replay_matches_c_core_bit_for_bit() {
         }
     }
     println!("replayed {rows} rows, {mismatches} mismatches");
-    assert_eq!(rows, 10500);
+    assert_eq!(rows, 10680);
     assert_eq!(mismatches, 0);
 }

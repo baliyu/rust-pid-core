@@ -24,6 +24,7 @@ int main(void)
         { 65536, 0, 0, 500, 3 },
         { 16711680, 65536, 16711680, 1000, 3 },
         { -17309, -1735, -100, 500, 2 },
+        { CONTROL_KP_Q16, CONTROL_KI_Q16, CONTROL_KD_Q16, 180, 4 },
     };
     static const int32_t sps[3] = { 1000, 2048, 3000 };
     const int n = (int)(sizeof cfgs / sizeof cfgs[0]);
@@ -48,9 +49,13 @@ int main(void)
             } else if (cfgs[s].mode == 2) {
                 sp = (int32_t)(rnd() % 4096u);
                 adc = (int32_t)(rnd() % 4096u);
-            } else {
+            } else if (cfgs[s].mode == 3) {
                 sp = (int32_t)(rnd() % 65536u);
                 adc = (int32_t)(rnd() % 65536u);
+            } else {
+                static const int32_t bv[6] = { 49, 50, 51, 4044, 4045, 4046 };
+                sp = 2048;
+                adc = (t % 30 < 5) ? bv[t / 30] : 2000;
             }
             int32_t out = control_step(&c, sp, adc);
             printf("%d,%d,%d,%d,%d,%d,%d,%d,%d\n", s, t, (int)cfgs[s].kp, (int)cfgs[s].ki, (int)cfgs[s].kd,
