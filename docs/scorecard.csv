@@ -61,3 +61,18 @@ step,id,prediction,pct,event_happened,result,note
 10,AV,exit code 0,85,yes,hit,
 10,AW,blob identical when regenerated,97,yes,hit,
 10,AX,QEMU run under 5 s,90,yes,hit,1.99 s
+11,AY,script reports 62 rows and 58 hits and 4 misses,90,yes,hit,
+11,AZ,consistency check finds no disagreeing row,92,yes,hit,
+11,BA,printed hit rate is 93.5,85,yes,hit,
+11,BB,totals JSON loads,97,yes,hit,
+12,BC,venv created and packages install,88,yes,hit,
+12,BD,before-boundary CSV has 11 lines and 8 killed rows,92,yes,hit,
+12,BE,make_figures exits 0 and writes both PNGs,85,yes,hit,
+12,BF,both PNGs over 15 KB,70,yes,hit,46147 and 89403 bytes
+12,BG,script prints 8 of 10 before and 10 of 10 after,92,yes,hit,
+12,BH,90 to 100 bin event rate is 90.0,90,yes,hit,
+13,BI,pytest reports 7 passed,80,yes,hit,
+13,BJ,all 10 mutation anchors match exactly once,90,yes,hit,
+13,BK,vectors test is not skipped,92,yes,hit,
+13,BL,pytest run under 15 s,85,yes,hit,2.17 s
+13,BM,git status shows only the new test folder,70,yes,hit,

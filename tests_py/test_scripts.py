@@ -74,3 +74,8 @@ def test_every_script_is_covered_here():
     assert scripts, "no scripts found"
     missing = [s for s in scripts if s not in me]
     assert missing == [], missing
+
+
+def test_readme_is_up_to_date():
+    r = run(PY + ["tools/make_readme.py", "--check"])
+    assert r.returncode == 0, r.stdout + r.stderr
