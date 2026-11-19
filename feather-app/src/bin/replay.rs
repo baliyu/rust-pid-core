@@ -119,7 +119,8 @@ fn USB() {
 fn main() -> ! {
     let mut peripherals = Peripherals::take().unwrap();
     let mut core = CorePeripherals::take().unwrap();
-    let mut clocks = GenericClockController::with_external_32kosc(
+    // Same clock setup as the crate's own USB serial example.
+    let mut clocks = GenericClockController::with_internal_32kosc(
         peripherals.gclk,
         &mut peripherals.pm,
         &mut peripherals.sysctrl,
