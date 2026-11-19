@@ -1,0 +1,42 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  rust:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: thumbv6m-none-eabi, thumbv7m-none-eabi
+          components: clippy, rustfmt
+      - name: Install QEMU
+        run: sudo apt-get update && sudo apt-get install -y qemu-system-arm
+      - name: Format
+        run: cargo fmt --check
+      - name: Unit and replay tests
+        run: cargo test
+      - name: Clippy
+        run: cargo clippy --all-targets -- -D warnings
+      - name: Library for Cortex-M3
+        run: cargo build --lib --target thumbv7m-none-eabi
+      - name: Replay on emulated Cortex-M3
+        run: cd qemu-app && cargo run --release
+      - name: Feather M0 firmware builds
+        run: cd feather-app && cargo build --release --bin replay_flash
+
+  python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install requirements
+        run: pip install -r requirements.txt
+      - name: Test the scripts
+        run: python -m pytest tests_py
