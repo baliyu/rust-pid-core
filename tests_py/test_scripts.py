@@ -147,3 +147,14 @@ def test_feather_figure_is_made(tmp_path):
     assert r.returncode == 0, r.stdout + r.stderr
     assert out.stat().st_size > 10000
     assert (root / "figures" / "feather_cycles.png").exists()
+
+
+def test_readme_states_the_measured_feather_numbers():
+    import csv
+
+    root, _, _ = _feather_paths()
+    with (root / "results" / "feather_cycles.csv").open() as f:
+        total = list(csv.DictReader(f))[-1]
+    readme = (root / "README.md").read_text()
+    assert f"{total['cycles_per_step']} cycles per control step" in readme
+    assert "results/feather_cycles.csv" in readme

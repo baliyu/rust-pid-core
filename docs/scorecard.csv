@@ -144,3 +144,10 @@ step,id,prediction,pct,event_happened,result,note
 34,EP,per_step is between 500 and 1500 cycles,55,yes,hit,558 cycles
 34,EQ,per_step is above 3000 cycles,8,no,hit,
 34,ER,per_step is below 300 cycles,5,no,hit,
+35,FC,the totals script reports 145 rows 132 hits and 13 misses,90,yes,hit,
+35,FD,the hit rate prints as 91.0,90,yes,hit,
+35,FE,pytest passes 9 of 9,85,yes,hit,
+36,FF,the parser prints 10680 rows 0 mismatches and 558.6 per step and exits 0,92,yes,hit,
+36,FG,the figure script writes a PNG over 10 KB,90,yes,hit,62981 bytes
+36,FH,pytest passes 12 tests,78,yes,hit,
+36,FI,no clipped or overlapping label in the Feather figure,80,yes,hit,checked by eye; the calibration figure legend does overlap n labels
