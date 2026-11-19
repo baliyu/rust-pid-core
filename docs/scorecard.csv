@@ -151,3 +151,16 @@ step,id,prediction,pct,event_happened,result,note
 36,FG,the figure script writes a PNG over 10 KB,90,yes,hit,62981 bytes
 36,FH,pytest passes 12 tests,78,yes,hit,
 36,FI,no clipped or overlapping label in the Feather figure,80,yes,hit,checked by eye; the calibration figure legend does overlap n labels
+37,FJ,the README builds and contains 558.6 cycles per control step,90,yes,hit,
+37,FK,pytest passes 13 tests,85,yes,hit,
+37,FL,"the totals read 152 rows, 139 hits and 13 misses, 91.4 percent",90,yes,hit,
+38,FM,"the push guards pass (branch main, tree clean, no remote yet)",90,no,miss,"a remote already existed, set to the wrong username baliy; nothing was pushed"
+39,FP,the existing remote is named origin,90,yes,hit,
+39,FQ,its URL is not the baliyu URL,60,yes,hit,it pointed at baliy
+40,FN,the push succeeds on the first try,75,yes,hit,re-predicted after the first attempt stopped at the guard
+40,FO,the remote main shows a7b9454 afterwards,80,yes,hit,re-predicted after the first attempt stopped at the guard
+40,FR,a sign-in prompt appears,40,no,hit,
+41,FS,the figure script runs and exits 0,88,yes,hit,
+41,FT,pytest passes 13 tests,90,yes,hit,
+41,FU,only make_figures.py and calibration.png show as changed,70,yes,hit,
+41,FV,no label or legend overlaps in the new calibration figure,80,yes,hit,checked by eye by the author
